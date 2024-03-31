@@ -10,7 +10,7 @@ from socials_app.serializers import SocialSerializer
 # Create your views here.
 
 
-@api_view()
+@api_view(["GET"])
 def profile_api(request):
     profile = MyProfile.objects.last()
     social = Social.objects.last()

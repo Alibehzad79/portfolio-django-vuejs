@@ -8,7 +8,7 @@ from socials_app.serializers import SocialSerializer
 # Create your views here.
 
 
-@api_view()
+@api_view(["GET"])
 def social_api(request):
     social = Social.objects.last()
     serializer = SocialSerializer(social, many=False)
