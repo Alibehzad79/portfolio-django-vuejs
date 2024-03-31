@@ -1,0 +1,52 @@
+body {
+    background-color: #f8f9fa !important;
+}
+
+.logo {
+    width: 40px !important;
+    height: 40px !important;
+    background-color: transparent !important;
+}
+
+.router-link-active,
+text-warning {
+    color: #FFB400 !important;
+}
+
+.search {
+    cursor: pointer !important;
+}
+
+.my-logo {
+    width: 350px !important;
+    height: 470px !important;
+    z-index: -1 !important;
+}
+
+.bg-warning {
+    background-color: #f78f42 !important;
+}
+
+.lets-talk {
+    cursor: pointer !important;
+}
+
+.social>li>a:hover {
+    color: #FFB400 !important;
+}
+
+.compony {
+    width: 141px !important;
+    height: 30px !important;
+}
+
+.service-card:hover {
+    border: #f78f42 solid 1px !important;
+    cursor: pointer !important;
+}
+
+.service-more:hover {
+    background-color: #f78f42 !important;
+    transition: all ease 0.3s !important;
+    cursor: pointer !important;
+}
