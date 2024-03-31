@@ -31,6 +31,7 @@ urlpatterns = [
     path(f"{api_v1}", include("resume_app.urls")),
     path(f"{api_v1}", include("contacts_app.urls")),
     path(f"{api_v1}", include("site_settings_app.urls")),
+    path(f"{api_v1}blog/", include("blog_app.urls")),
     path('tinymce/', include('tinymce.urls')),
     path("admin/", admin.site.urls),
 ]
