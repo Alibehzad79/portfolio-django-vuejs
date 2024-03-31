@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "projects_app",
     "resume_app",
     "contacts_app",
+    "site_settings_app",
     # third packages
     "tinymce",
 ]
