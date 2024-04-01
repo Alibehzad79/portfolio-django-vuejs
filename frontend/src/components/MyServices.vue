@@ -9,28 +9,26 @@
                     amet mollitia praesentium saepe veniam nesciunt voluptatum nihil in tempore error totam debitis
                     incidunt harum, vitae corrupti!</p>
             </div>
-            <div class="servics-body m-auto d-flex gap-3 flex-wrap justify-content-center">
-                <div v-for="(service, index) in services" :key="index" @click="getServiceDetail(service.slug)"
-                    class="service-card card border-0 mb-3" style="max-width: 18rem;">
-                    <div class="card-header bg-transparent border-0 text-start p-4"><i
-                            class="bg-warning p-3 text-white rounded fs-2" :class="'ri-' + service.icon + '-line'"></i>
-                    </div>
-                    <div class="card-body d-flex flex-column gap-2">
-                        <h5 class="card-title text-start">{{ service.title }}</h5>
-                        <p class="card-text text-start text-secondary">{{ service.content }}</p>
-                    </div>
+            <div class="servics-body m-auto d-flex gap-3 flex-column justify-content-center align-items-center">
+                <div class="d-flex gap-3 flex-wrap justify-content-center">
+                    <service-item v-for="service in services" :key="service" :icon="service.icon" :title="service.title"
+                        :content="service.content" :slug="service.slug"></service-item>
                 </div>
-                <router-link to="/services"
-                    class="service-more card border-0 px-5 mb-3 justify-content-center nav-link"><span>more <i
-                            class="ri-arrow-right-line"></i></span></router-link>
+                <primary-button title="More" url="/services"></primary-button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import ServiceItem from '@/components/services_components/ServiceItem.vue'
+import PrimaryButton from "@/components/buttons_components/PrimaryButton.vue";
 export default {
     name: "MyServices",
+    components: {
+        "service-item": ServiceItem,
+        'primary-button': PrimaryButton,
+    },
     data() {
         return {
             services: [

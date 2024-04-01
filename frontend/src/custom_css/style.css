@@ -50,3 +50,13 @@ text-warning {
     transition: all ease 0.3s !important;
     cursor: pointer !important;
 }
+
+.project-image {
+    width: 520px !important;
+    height: 390px !important;
+    border-radius: 20px !important;
+}
+
+.project-item {
+    cursor: pointer !important;
+}
