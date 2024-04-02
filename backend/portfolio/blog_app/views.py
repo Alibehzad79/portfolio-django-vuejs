@@ -11,7 +11,11 @@ from blog_app.serializers import ArticleSerializer
 
 @api_view(["GET"])
 def article_list_api(request):
-    articles = Article.objects.filter(is_active=True).all()
+    item_limit = request.GET.get("limit")
+    if item_limit:
+        articles = Article.objects.filter(is_active=True).all()[:int(item_limit)]
+    else:
+        articles = Article.objects.filter(is_active=True).all()
     serializer = ArticleSerializer(articles, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 

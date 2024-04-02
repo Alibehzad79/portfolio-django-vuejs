@@ -12,7 +12,11 @@ from datetime import datetime
 
 @api_view(["GET"])
 def service_api(request):
-    service = Service.objects.all()
+    item_limit = request.GET.get("limit")
+    if item_limit:
+        service = Service.objects.all()[: int(item_limit)]
+    else:
+        service = Service.objects.all()
     serializer = ServiceSerializer(service, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 

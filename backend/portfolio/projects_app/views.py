@@ -10,6 +10,10 @@ from projects_app.serializers import ProjectSerializer
 
 @api_view(["GET"])
 def project_api(request):
-    projects = Project.objects.all()
+    item_limit = request.GET.get("limit")
+    if item_limit:
+        projects = Project.objects.all()[: int(item_limit)]
+    else:
+        projects = Project.objects.all()
     serializer = ProjectSerializer(projects, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)

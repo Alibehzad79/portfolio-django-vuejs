@@ -18,6 +18,7 @@ class Category(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=100)
     content = HTMLField()
+    image = models.ImageField(upload_to="projects/images/")
     client = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     start_date = models.DateField(auto_now=False, auto_now_add=False)
