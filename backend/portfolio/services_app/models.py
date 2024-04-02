@@ -7,7 +7,7 @@ class Service(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField()
     content = models.TextField()
-
+    icon = models.CharField(max_length=100)
     class Meta:
         verbose_name = "Service"
         verbose_name_plural = verbose_name + "s"

@@ -20,7 +20,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Service
-        fields = ("title", "slug", "content", "service_option", "service_plan")
+        fields = ("title", "slug", "content", "icon", "service_option", "service_plan")
 
     def get_service_option(self, obj):
         return (

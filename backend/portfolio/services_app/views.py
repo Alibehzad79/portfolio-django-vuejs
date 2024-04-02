@@ -14,9 +14,9 @@ from datetime import datetime
 def service_api(request):
     item_limit = request.GET.get("limit")
     if item_limit:
-        service = Service.objects.all()[: int(item_limit)]
+        service = Service.objects.order_by('-id').all()[: int(item_limit)]
     else:
-        service = Service.objects.all()
+        service = Service.objects.order_by('-id').all()
     serializer = ServiceSerializer(service, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 

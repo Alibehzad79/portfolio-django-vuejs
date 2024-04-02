@@ -12,8 +12,8 @@ from projects_app.serializers import ProjectSerializer
 def project_api(request):
     item_limit = request.GET.get("limit")
     if item_limit:
-        projects = Project.objects.all()[: int(item_limit)]
+        projects = Project.objects.order_by('-id').all()[: int(item_limit)]
     else:
-        projects = Project.objects.all()
+        projects = Project.objects.order_by('-id').all()
     serializer = ProjectSerializer(projects, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
