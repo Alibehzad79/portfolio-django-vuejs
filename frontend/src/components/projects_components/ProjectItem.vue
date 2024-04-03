@@ -2,7 +2,7 @@
 
     <div class="project-item container">
         <div @click="getUrl" class="d-flex flex-column gap-3 bg-mute p-4 rounded-3">
-            <img :src="'http://127.0.0.1:8000'+image" :alt="title" class="img-fluid project-image">
+            <img :src="'http://127.0.0.1:8000' + image" :alt="title" class="img-fluid project-image">
             <div class="info d-flex flex-column gap-2">
                 <span class="text-start">{{ client }}</span>
                 <h6 class="text-start fw-bold project-title">{{ title }}</h6>
@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         getUrl() {
-            this.$router.push(this.url)
+            this.$router.push('/projects/' + this.url)
         }
     }
 }

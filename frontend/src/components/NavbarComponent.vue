@@ -3,8 +3,8 @@
         <nav class="navbar navbar-expand-lg bg-white mt-4 container rounded-5 p-2">
             <div class="container">
                 <div class="d-flex gap-3 justify-content-center align-items-center">
-                    <a class="navbar-brand" href="#"><img src="../assets/logo.png" alt="Logo"
-                            class="img-fluid rounded-5 logo"></a>
+                    <a v-if="data" class="navbar-brand" href="/"><img :src="domain + data.site_settings.site_logo"
+                            alt="Logo" class="img-fluid rounded-5 logo"></a>
                     <i class="ri-search-line fs-4 d-md-none search" @click="showSearch"
                         :class="{ 'text-primary rounded-5': search }"></i>
                 </div>
@@ -19,10 +19,6 @@
                             <router-link class="nav-link" to="/">Home</router-link>
                         </li>
                         <li class="nav-item">
-                            <!-- <a class="nav-link" href="/about">About</a> -->
-                            <router-link to="/about" class="nav-link">About</router-link>
-                        </li>
-                        <li class="nav-item">
                             <router-link to="/services" class="nav-link">Services</router-link>
                         </li>
                         <li class="nav-item">
@@ -33,6 +29,10 @@
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link" to="/contact">Contact</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <!-- <a class="nav-link" href="/about">About</a> -->
+                            <router-link to="/about" class="nav-link">About</router-link>
                         </li>
                     </ul>
                     <div class="d-none d-md-flex search" @click="showSearch"
@@ -50,16 +50,34 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     name: "NavbarComponent",
     data() {
         return {
             search: false,
+            data: null,
+            domain: "http://127.0.0.1:8000"
         }
     },
     methods: {
         showSearch() {
             this.search = !this.search
+        }
+    },
+    mounted() {
+        axios.get('http://127.0.0.1:8000/api/v1/site-settings/')
+            .then(response => this.data = response.data)
+            .catch(() => this.error = true)
+            .finally(() => this.loading = false)
+    },
+    watch: {
+        $route() {
+            axios.get('http://127.0.0.1:8000/api/v1/site-settings/')
+                .then(response => this.data = response.data)
+                .catch(() => this.error = true)
+                .finally(() => this.loading = false)
         }
     }
 }

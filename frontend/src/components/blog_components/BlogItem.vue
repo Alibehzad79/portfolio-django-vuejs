@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         getUrl(){
-            this.$router.push(this.slug)
+            this.$router.push('/blog/'+this.slug)
         }
     }
 }

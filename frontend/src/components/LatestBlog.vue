@@ -24,7 +24,7 @@
                 <div v-if="articles == null" class="border p-5 border-dark rounded">
                     <span class="d-flex align-items-center gap-2"><i class="ri-box-3-line fs-1"></i> Empty</span>
                 </div>
-                <primary-button class="mt-5" title="Explore More" url="/articles" v-if="articles"></primary-button>
+                <primary-button class="mt-5" title="Explore More" url="/blog" v-if="articles"></primary-button>
             </div>
         </div>
     </div>

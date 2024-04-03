@@ -17,7 +17,8 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <img :src="domain + profile.profile.img" :alt="profile.profile.full_name" :title="profile.profile.full_name" class="img-fluid my-logo">
+                    <img :src="domain + profile.profile.img" :alt="profile.profile.full_name"
+                        :title="profile.profile.full_name" class="img-fluid my-logo">
                 </div>
             </div>
             <div class="d-flex flex-column text-start gap-3 col col-md-3">
@@ -25,7 +26,7 @@
                     {{ profile.profile.whate_am_i }}
                 </h2>
                 <p class="text-secondary">{{ profile.profile.my_description }}</p>
-                <primary-button title="Let's To Talk!" url="#"></primary-button>
+                <primary-button title="Let's To Talk!" url="/contact"></primary-button>
             </div>
             <div v-if="loading">
                 <div class="spinner-border" role="status">

@@ -79,7 +79,7 @@
             <span><i class="ri-error-line fs-1"></i></span>
         </div>
         <div v-if="data == null" class="border p-5 border-dark rounded container m-auto">
-            <span class="d-flex align-items-center gap-2"><i class="ri-box-3-line fs-1"></i> Empty</span>
+            <span class="d-flex align-items-center gap-2 justify-content-center"><i class="ri-box-3-line fs-1"></i> Empty</span>
         </div>
     </div>
 </template>
