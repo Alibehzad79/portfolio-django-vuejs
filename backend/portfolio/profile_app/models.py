@@ -8,7 +8,7 @@ class MyProfile(models.Model):
     whate_am_i = models.CharField(max_length=100, blank=True, null=True)
     my_description = models.TextField(blank=True, null=True)
     img = models.ImageField(upload_to="profile/imgs/", blank=True, null=True)
-
+    phone = models.CharField(max_length=100)
     class Meta:
         verbose_name = "Profile"
         verbose_name_plural = verbose_name + "s"
