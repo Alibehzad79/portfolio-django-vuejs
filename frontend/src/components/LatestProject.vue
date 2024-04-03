@@ -7,12 +7,22 @@
                     cumque quisquam, hic consectetur
                     laborum veniam omnis aliquam</p>
             </div>
-            <div class="projects d-flex" v-if="info != 'null'">
-                <project-item v-for="data in info" :key="data" :image="data.project_gallery['0'].image"
-                    :title="data.title" :client="data.client" :url="data.title.replace(' ', '-')"></project-item>
+            <div class="projects d-flex flex-column flex-md-row gap-3" v-if="info">
+                <project-item v-for="data in info" :key="data" :image="data.image" :title="data.title"
+                    :client="data.client" :url="data.title.replace(' ', '-')"></project-item>
             </div>
-
-            <primary-buttom title="more projects" url="/projects"></primary-buttom>
+            <div v-if="loading">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <div v-if="error">
+                <span><i class="ri-error-line fs-1"></i></span>
+            </div>
+            <div v-if="info == null" class="border p-5 border-dark rounded">
+                <span class="d-flex align-items-center gap-2"><i class="ri-box-3-line fs-1"></i> Empty</span>
+            </div>
+            <primary-buttom title="more projects" url="/projects" v-if="info"></primary-buttom>
         </div>
     </div>
 </template>
@@ -29,19 +39,23 @@ export default {
     },
     data() {
         return {
-            info: "null"
+            loading: true,
+            error: false,
+            info: null,
         }
     },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/v1/projects/')
+        axios.get('http://127.0.0.1:8000/api/v1/projects/?limit=3')
             .then(response => this.info = response.data)
-            .catch(error => this.info = error)
+            .catch(() => this.error = true)
+            .finally(() => this.loading = false)
     },
     watch: {
         $route() {
-            axios.get('http://127.0.0.1:8000/api/v1/projects/')
+            axios.get('http://127.0.0.1:8000/api/v1/projects/?limit=3')
                 .then(response => this.info = response.data)
-                .catch(error => this.info = error)
+                .catch(() => this.error = true)
+                .finally(() => this.loading = false)
         }
 
     }

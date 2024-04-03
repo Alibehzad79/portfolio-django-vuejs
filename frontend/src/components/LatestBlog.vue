@@ -1,17 +1,17 @@
 <template>
-    <div class="myServices rounded-2">
+    <div class="latestBlog p-3 rounded-2 bg-white">
         <div id="services" class="container my-5 d-flex flex-column gap-5">
             <div class="service-headee w-50 m-auto">
-                <h4 class="h1 fw-bold">My Sercices</h4>
+                <h4 class="h1 fw-bold">Latest Blog</h4>
                 <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis eligendi
                     facilis consequuntur ab
                     amet mollitia praesentium saepe veniam nesciunt voluptatum nihil in tempore error totam debitis
                     incidunt harum, vitae corrupti!</p>
             </div>
-            <div class="servics-body m-auto d-flex gap-3 flex-column justify-content-center align-items-center">
+            <div class="latest-body m-auto d-flex gap-3 flex-column justify-content-center align-items-center">
                 <div class="d-flex gap-3 flex-wrap justify-content-center">
-                    <service-item v-for="service in services" :key="service" :icon="service.icon" :title="service.title"
-                        :content="service.content" :slug="service.slug"></service-item>
+                    <blog-item v-for="article in articles" :key="article" :title="article.title"
+                        :content="article.content" :slug="article.slug" :image="article.image"></blog-item>
                 </div>
                 <div v-if="loading">
                     <div class="spinner-border" role="status">
@@ -21,50 +21,45 @@
                 <div v-if="error">
                     <span><i class="ri-error-line fs-1"></i></span>
                 </div>
-                <div v-if="services == null" class="border p-5 border-dark rounded">
+                <div v-if="articles == null" class="border p-5 border-dark rounded">
                     <span class="d-flex align-items-center gap-2"><i class="ri-box-3-line fs-1"></i> Empty</span>
                 </div>
-                <primary-button title="More" url="/services" v-if="services"></primary-button>
+                <primary-button class="mt-5" title="Explore More" url="/articles" v-if="articles"></primary-button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import ServiceItem from '@/components/services_components/ServiceItem.vue'
-import PrimaryButton from "@/components/buttons_components/PrimaryButton.vue";
+import BlogItem from './blog_components/BlogItem.vue';
 import axios from 'axios';
+import PrimaryButton from './buttons_components/PrimaryButton.vue';
 export default {
-    name: "MyServices",
+    name: "LatestBlug",
     components: {
-        "service-item": ServiceItem,
+        'blog-item': BlogItem,
         'primary-button': PrimaryButton,
     },
     data() {
         return {
-            services: null,
+            articles: null,
             error: false,
             loading: true
         }
     },
-    methods: {
-        getServiceDetail(slug) {
-            this.$router.push({ name: 'servic-detail', params: { slug: slug } })
-        }
-    },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/v1/services/?limit=3')
-            .then(response => this.services = response.data)
+        axios.get('http://127.0.0.1:8000/api/v1/blog/articles/?limit=3')
+            .then(response => this.articles = response.data)
             .catch(() => this.error = true)
-            .finally(this.loading = false)
+            .finally(() => this.loading = false)
     },
     watch: {
         $route() {
-            axios.get('http://127.0.0.1:8000/api/v1/services/?limit=3')
-                .then(response => this.services = response.data)
+            axios.get('http://127.0.0.1:8000/api/v1/blog/articles/?limit=3')
+                .then(response => this.articles = response.data)
                 .catch(() => this.error = true)
-                .finally(this.loading = false)
+                .finally(() => this.loading = false)
         }
-    }
+    },
 }
 </script>

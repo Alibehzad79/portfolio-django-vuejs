@@ -2,6 +2,10 @@ body {
     background-color: #f8f9fa !important;
 }
 
+.bg-mute {
+    background-color: #f8f9fa !important;
+}
+
 .logo {
     width: 40px !important;
     height: 40px !important;
@@ -52,11 +56,52 @@ text-warning {
 }
 
 .project-image {
-    width: 520px !important;
+    width: 100% !important;
     height: 390px !important;
     border-radius: 20px !important;
 }
 
 .project-item {
     cursor: pointer !important;
+}
+
+.project-item:hover>div {
+    border: #f78f42 1px solid !important;
+}
+
+.text-secondary {
+    color: gray !important;
+}
+
+.resume {
+    cursor: pointer !important;
+}
+
+.active {
+    color: #f78f42 !important;
+    background-color: transparent !important;
+}
+
+.blog-item {
+    cursor: pointer !important;
+}
+
+.blog-item:hover {
+    border: 1px solid #f78f42;
+}
+
+.blog-item:hover>.blog-title {
+    color: #FFB400 !important;
+}
+
+.blog-item-img {
+    width: 100% !important;
+    height: 300px !important;
+    border-radius: 10px !important;
+}
+
+.blog-content {
+    overflow: hidden !important;
+    max-height: 70px !important;
+    -webkit-line-clamp: 3 !important;
 }
