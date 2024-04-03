@@ -5,6 +5,7 @@
     <LatestProject />
     <MyResume />
     <LatestBlog />
+    <ContactUsComponent />
   </div>
 </template>
 
@@ -15,7 +16,7 @@ import MyServices from '@/components/MyServices.vue'
 import LatestProject from '@/components/LatestProject.vue'
 import LatestBlog from '@/components/LatestBlog.vue'
 import MyResume from '@/components/MyResume.vue'
-
+import ContactUsComponent from '@/components/ContactUsComponent.vue'
 export default {
   name: 'HomeView',
   components: {
@@ -24,6 +25,7 @@ export default {
     LatestProject,
     LatestBlog,
     MyResume,
+    ContactUsComponent,
   }
 }
 </script>
