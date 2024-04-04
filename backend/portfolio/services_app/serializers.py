@@ -24,11 +24,11 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     def get_service_option(self, obj):
         return (
-            ServicePlanSerializer(option).data for option in obj.service_options.all()
+            ServiceOptionSerializer(option).data for option in obj.service_options.all()
         )
 
     def get_service_plan(self, obj):
-        return (ServiceOptionSerializer(plan).data for plan in obj.service_plans.all())
+        return (ServicePlanSerializer(plan).data for plan in obj.service_plans.all())
 
 
 class RequestToWorkSerializer(serializers.ModelSerializer):
