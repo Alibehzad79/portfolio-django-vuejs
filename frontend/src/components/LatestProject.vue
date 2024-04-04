@@ -9,7 +9,7 @@
             </div>
             <div class="projects d-flex flex-column flex-md-row gap-3" v-if="info">
                 <project-item v-for="data in info" :key="data" :image="data.image" :title="data.title"
-                    :client="data.client" :url="data.title.replace(' ', '-')"></project-item>
+                    :client="data.client" :url="data.website" class="bg-mute p-0 rounded"></project-item>
             </div>
             <div v-if="loading">
                 <div class="spinner-border" role="status">

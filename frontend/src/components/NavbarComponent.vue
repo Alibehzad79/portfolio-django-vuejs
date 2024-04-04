@@ -5,7 +5,7 @@
                 <div class="d-flex gap-3 justify-content-center align-items-center">
                     <a v-if="data" class="navbar-brand" href="/"><img :src="domain + data.site_settings.site_logo"
                             alt="Logo" class="img-fluid rounded-5 logo"></a>
-                    <i class="ri-search-line fs-4 d-md-none search" @click="showSearch"
+                    <i class="ri-search-line fs-4 d-lg-none search" @click="showSearch"
                         :class="{ 'text-primary rounded-5': search }"></i>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -35,7 +35,7 @@
                             <router-link to="/about" class="nav-link">About</router-link>
                         </li>
                     </ul>
-                    <div class="d-none d-md-flex search" @click="showSearch"
+                    <div class="d-none d-lg-flex search" @click="showSearch"
                         :class="{ 'text-warning rounded-5': search }">
                         <i class="ri-search-line fs-4"></i>
                     </div>
