@@ -1,5 +1,5 @@
 <template>
-    <div class="service-item">
+    <div class="service-item col-md-3">
         <div class="service-card card border-0 mb-3" style="max-width: 18rem;" @click="getUrl">
             <div class="card-header bg-transparent border-0 text-start p-4"><i
                     class="bg-warning p-3 text-white rounded fs-2" :class="'ri-' + icon + '-line'"></i>
@@ -27,8 +27,8 @@ export default {
         }
     },
     methods: {
-        getUrl(){
-            this.$router.push('/services/'+this.slug)
+        getUrl() {
+            this.$router.push('/services/' + this.slug)
         }
     }
 }

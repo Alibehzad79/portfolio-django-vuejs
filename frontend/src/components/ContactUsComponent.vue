@@ -80,6 +80,12 @@
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
+                <div v-if="dataError">
+                    <span><i class="ri-error-line fs-1"></i></span>
+                </div>
+                <div v-if="data == null" class="border p-5 border-dark rounded">
+                    <span class="d-flex align-items-center gap-2"><i class="ri-box-3-line fs-1"></i> Empty</span>
+                </div>
             </div>
         </div>
 
@@ -99,6 +105,7 @@ export default {
         return {
             data: null,
             dataLoading: true,
+            dataError: false,
             name: "",
             email: "",
             subject: "",
@@ -127,7 +134,7 @@ export default {
     mounted() {
         axios.get("http://127.0.0.1:8000/api/v1/contacts/")
             .then(response => this.data = response.data)
-            .catch(error => console.log(error))
+            .catch(() => this.dataError = true)
             .finally(() => this.dataLoading = false)
 
     },
@@ -135,7 +142,7 @@ export default {
         $route() {
             axios.get("http://127.0.0.1:8000/api/v1/contacts/")
                 .then(response => this.data = response.data)
-                .catch(error => console.log(error))
+                .catch(() => this.dataError = true)
                 .finally(() => this.dataLoading = false)
         }
     }
