@@ -17,6 +17,7 @@ class Category(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=100)
+    slug = models.SlugField()
     content = HTMLField()
     image = models.ImageField(upload_to="projects/images/")
     client = models.CharField(max_length=100)

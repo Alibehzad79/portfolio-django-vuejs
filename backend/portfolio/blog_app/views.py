@@ -13,9 +13,13 @@ from blog_app.serializers import ArticleSerializer
 def article_list_api(request):
     item_limit = request.GET.get("limit")
     if item_limit:
-        articles = Article.objects.filter(is_active=True).order_by('-id').all()[:int(item_limit)]
+        articles = (
+            Article.objects.filter(is_active=True)
+            .order_by("-id")
+            .all()[: int(item_limit)]
+        )
     else:
-        articles = Article.objects.filter(is_active=True).order_by('-id').all()
+        articles = Article.objects.filter(is_active=True).order_by("-id").all()
     serializer = ArticleSerializer(articles, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -25,10 +29,7 @@ def article_detail_api(request, *args, **kwargs):
     article_slug = kwargs["slug"]
     try:
         article = Article.objects.get(slug=article_slug, is_active=True)
-    except:
-        article = None
-
-    if article is not None:
-        serializer = ArticleSerializer(article, many=False)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    return Response({"status": "Not Found"}, status.HTTP_404_NOT_FOUND)
+    except Article.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    serializer = ArticleSerializer(article, many=False)
+    return Response(serializer.data, status=status.HTTP_200_OK)

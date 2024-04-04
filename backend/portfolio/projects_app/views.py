@@ -12,8 +12,19 @@ from projects_app.serializers import ProjectSerializer
 def project_api(request):
     item_limit = request.GET.get("limit")
     if item_limit:
-        projects = Project.objects.order_by('-id').all()[: int(item_limit)]
+        projects = Project.objects.order_by("-id").all()[: int(item_limit)]
     else:
-        projects = Project.objects.order_by('-id').all()
+        projects = Project.objects.order_by("-id").all()
     serializer = ProjectSerializer(projects, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(["GET"])
+def project_detail_api(request, *args, **kwargs):
+    project_slug = kwargs.get("slug")
+    try:
+        project = Project.objects.get(slug=project_slug)
+    except Project.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    serializer = ProjectSerializer(project, many=False)
     return Response(serializer.data, status=status.HTTP_200_OK)

@@ -14,10 +14,21 @@ from datetime import datetime
 def service_api(request):
     item_limit = request.GET.get("limit")
     if item_limit:
-        service = Service.objects.order_by('-id').all()[: int(item_limit)]
+        service = Service.objects.order_by("-id").all()[: int(item_limit)]
     else:
-        service = Service.objects.order_by('-id').all()
+        service = Service.objects.order_by("-id").all()
     serializer = ServiceSerializer(service, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(["GET"])
+def service_detail_api(request, *args, **kwargs):
+    service_slug = kwargs.get("slug")
+    try:
+        service = Service.objects.get(slug=service_slug)
+    except Service.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    serializer = ServiceSerializer(service, many=False)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
