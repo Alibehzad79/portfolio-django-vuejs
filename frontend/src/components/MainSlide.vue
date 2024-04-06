@@ -26,7 +26,11 @@
                     {{ profile.profile.whate_am_i }}
                 </h2>
                 <p class="text-secondary">{{ profile.profile.my_description }}</p>
-                <primary-button title="Let's To Talk!" url="#contact"></primary-button>
+                <div class="lets-talk d-flex gap-2 bg-warning justify-content-between align-items-center p-2 rounded-5">
+                    <a :href="'tel:'+profile.profile.phone" class="ms-3 nav-link text-dark">Let's to Talk!</a>
+                    <a :href="'tel:'+profile.profile.phone" class="text-decoration-none bg-dark px-2 py-1 rounded-5 text-warning"><i
+                            class="ri-arrow-right-line"></i></a>
+                </div>
             </div>
             <div v-if="loading && profile != null">
                 <div class="spinner-border" role="status">
@@ -45,12 +49,10 @@
 </template>
 
 <script>
-import PrimaryButton from "@/components/buttons_components/PrimaryButton.vue";
 import axios from "axios";
 export default {
     name: "MainSlide",
     components: {
-        "primary-button": PrimaryButton,
     },
     data() {
         return {

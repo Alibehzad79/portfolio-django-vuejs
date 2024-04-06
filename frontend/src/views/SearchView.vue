@@ -1,7 +1,7 @@
 <template>
     <div class="project-view container p-5">
         <div class="mt-5 d-flex flex-column m-auto gap-2">
-            <h6 class="fw-bold h1 mb-5">Blog | {{$route.params.search}}</h6>
+            <h6 class="fw-bold h1 mb-5">Search <span class="text-warning">"{{$route.params.search}}"</span> </h6>
             <div class="projects d-flex flex-column flex-md-row flex-wrap gap-4" v-if="data">
                 <blog-item v-for="article in data" :key="article" :title="article.title" :content="article.content"
                     :slug="article.slug" :image="article.image" class="bg-white"></blog-item>

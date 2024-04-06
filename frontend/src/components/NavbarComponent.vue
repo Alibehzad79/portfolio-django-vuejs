@@ -27,12 +27,6 @@
                         <li class="nav-item">
                             <router-link class="nav-link" to="/blog/articles">Blog</router-link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/#contact">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/#resume" class="nav-link">About</a>
-                        </li>
                     </ul>
                     <div class="d-none d-lg-flex search" @click="showSearch"
                         :class="{ 'text-warning rounded-5': search }">
