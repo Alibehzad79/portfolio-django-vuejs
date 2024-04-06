@@ -3,9 +3,6 @@
     <div class="services-view container p-5">
         <div class="mt-5 d-flex flex-column m-auto gap-2">
             <h6 class="fw-bold h1">Our Services</h6>
-            <p class="text-secondary w-50 m-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, dicta
-                id aliquam
-                animi doloribus deserunt mollitia inventore culpa </p>
             <div class="servics-body m-auto d-flex gap-3 flex-column justify-content-center align-items-center mt-5">
                 <div class="d-flex gap-3 flex-wrap justify-content-center">
                     <service-item v-for="service in services" :key="service" :icon="service.icon" :title="service.title"
