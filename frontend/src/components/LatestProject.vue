@@ -11,7 +11,7 @@
                 <project-item v-for="data in info" :key="data" :image="data.image" :title="data.title"
                     :client="data.client" :url="data.website" class="bg-mute p-0 rounded"></project-item>
             </div>
-            <div v-if="loading">
+            <div v-if="loading && info != null">
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>

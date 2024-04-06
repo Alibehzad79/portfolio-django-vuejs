@@ -1,11 +1,10 @@
 <template>
     <div class="project-view container p-5">
         <div class="mt-5 d-flex flex-column m-auto gap-2">
-            <h6 class="fw-bold h1 mb-5">Projects</h6>
-            <div class="projects d-flex flex-column flex-md-row gap-4 flex-wrap" v-if="data">
-                <project-item v-for="project in data" :key="project" :image="project.image" :title="project.title"
-                    :client="project.client" :url="project.website"
-                    class="col-md-6 col-lg-4 bg-white p-0 rounded"></project-item>
+            <h6 class="fw-bold h1 mb-5">Blog</h6>
+            <div class="projects d-flex flex-column flex-md-row flex-wrap gap-4" v-if="data">
+                <blog-item v-for="article in data" :key="article" :title="article.title" :content="article.content"
+                    :slug="article.slug" :image="article.image" class="bg-white"></blog-item>
             </div>
             <div v-if="loading && data != null">
                 <div class="spinner-border" role="status">
@@ -23,14 +22,13 @@
 </template>
 
 <script>
-
+import BlogItem from '@/components/blog_components/BlogItem.vue';
 import axios from 'axios';
-import ProjectItem from '@/components/projects_components/ProjectItem.vue'
 
 export default {
-    name: "ProjectView",
+    name: "ArticleList",
     components: {
-        'project-item': ProjectItem,
+        "blog-item": BlogItem,
     },
     data() {
         return {
@@ -40,14 +38,14 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/v1/projects/')
+        axios.get("http://127.0.0.1:8000/api/v1/blog/articles/")
             .then(response => this.data = response.data)
             .catch(() => this.error = true)
             .finally(() => this.loading = false)
     },
     watch: {
         $route() {
-            axios.get('http://127.0.0.1:8000/api/v1/projects/')
+            axios.get("http://127.0.0.1:8000/api/v1/blog/articles/")
                 .then(response => this.data = response.data)
                 .catch(() => this.error = true)
                 .finally(() => this.loading = false)

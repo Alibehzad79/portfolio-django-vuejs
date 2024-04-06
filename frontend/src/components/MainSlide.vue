@@ -28,7 +28,7 @@
                 <p class="text-secondary">{{ profile.profile.my_description }}</p>
                 <primary-button title="Let's To Talk!" url="/contact"></primary-button>
             </div>
-            <div v-if="loading">
+            <div v-if="loading && profile != null">
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>

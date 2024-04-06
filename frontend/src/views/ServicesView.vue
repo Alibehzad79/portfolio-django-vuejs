@@ -11,7 +11,7 @@
                     <service-item v-for="service in services" :key="service" :icon="service.icon" :title="service.title"
                         :content="service.content" :slug="service.slug"></service-item>
                 </div>
-                <div v-if="loading">
+                <div v-if="loading  && services != null">
                     <div class="spinner-border" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>

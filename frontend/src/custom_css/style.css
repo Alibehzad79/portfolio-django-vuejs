@@ -105,3 +105,13 @@ text-warning {
     max-height: 70px !important;
     -webkit-line-clamp: 3 !important;
 }
+
+.badge {
+    background: #F78F421A !important;
+    color: #F78F42 !important;
+}
+
+.article-img {
+    width: 100% !important;
+    height: 462px !important;
+}

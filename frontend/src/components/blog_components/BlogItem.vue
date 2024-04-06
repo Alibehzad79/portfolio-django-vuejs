@@ -1,9 +1,9 @@
 <template>
-    <div class="blog-item d-flex flex-column gap-2 p-3 bg-mute text-start rounded-3 col-md-3" @click="getUrl">
+    <div class="blog-item d-flex flex-column gap-2 p-3 text-start rounded-3 col-md-5 col-lg-3 m-auto" @click="getUrl">
         <img :src="domain + image" alt="Article Title" class="img-fluid blog-item-img">
         <h6 class="fw-bold blog-title">{{ title }}</h6>
         <p class="text-secondary blog-content" v-html="content"></p>
-        <a href="#" class="nav-link">Read More <i class="ms-1 ri-arrow-right-line"></i></a>
+        <a class="nav-link">Read More <i class="ms-1 ri-arrow-right-line"></i></a>
     </div>
 
 </template>
@@ -18,8 +18,8 @@ export default {
         }
     },
     methods: {
-        getUrl(){
-            this.$router.push('/blog/'+this.slug)
+        getUrl() {
+            this.$router.push('/blog/articles/' + this.slug)
         }
     }
 }

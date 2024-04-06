@@ -4,6 +4,8 @@ import AboutView from '../views/AboutView.vue'
 import ServicesView from '../views/ServicesView.vue'
 import ServiceDetailView from '../views/ServiceDetailView.vue'
 import ProjectsView from '../views/ProjectsView.vue'
+import ArticleListView from '../views/ArticleListView.vue'
+import ArticleDetailView from '../views/ArticleDetailView.vue'
 
 const routes = [
   {
@@ -25,6 +27,16 @@ const routes = [
     path: '/projects',
     name: 'projects',
     component: ProjectsView
+  },
+  {
+    path: '/blog/articles',
+    name: 'articles',
+    component: ArticleListView
+  },
+  {
+    path: '/blog/articles/:slug',
+    name: 'article_detail',
+    component: ArticleDetailView
   },
   {
     path: '/about',

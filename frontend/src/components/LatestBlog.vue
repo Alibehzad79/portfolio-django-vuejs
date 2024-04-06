@@ -11,9 +11,10 @@
             <div class="latest-body m-auto d-flex gap-3 flex-column justify-content-center align-items-center">
                 <div class="d-flex gap-3 flex-wrap justify-content-center">
                     <blog-item v-for="article in articles" :key="article" :title="article.title"
-                        :content="article.content" :slug="article.slug" :image="article.image"></blog-item>
+                        :content="article.content" :slug="article.slug" :image="article.image"
+                        class="bg-mute"></blog-item>
                 </div>
-                <div v-if="loading">
+                <div v-if="loading && articles != null">
                     <div class="spinner-border" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
@@ -21,7 +22,7 @@
                 <div v-if="error">
                     <span><i class="ri-error-line fs-1"></i></span>
                 </div>
-                <div v-if="articles == null" class="border p-5 border-dark rounded">
+                <div v-if="articles == null" class="border p-5 border-dark roundeds">
                     <span class="d-flex align-items-center gap-2"><i class="ri-box-3-line fs-1"></i> Empty</span>
                 </div>
                 <primary-button class="mt-5" title="Explore More" url="/blog" v-if="articles"></primary-button>

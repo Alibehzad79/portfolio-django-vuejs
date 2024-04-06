@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <div v-if="loading">
+                <div v-if="loading && data != null">
                     <div class="spinner-border" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
