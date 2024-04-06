@@ -20,6 +20,9 @@
         <div v-if="data == null" class="border p-5 border-dark rounded my-5">
             <span class="d-flex align-items-center gap-2"><i class="ri-box-3-line fs-1"></i> Empty</span>
         </div>
+        <div v-if="data == ''" class="border p-5 border-dark roundeds">
+                    <span class="d-flex align-items-center gap-2"><i class="ri-box-3-line fs-1"></i> Empty</span>
+        </div>
     </div>
 </template>
 

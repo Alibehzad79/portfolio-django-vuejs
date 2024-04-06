@@ -14,7 +14,7 @@ export default {
     props: ['title', 'content', 'image', 'slug'],
     data() {
         return {
-            domain: "http://127.0.0.1:8000"
+            domain: this.$store.state.domain
         }
     },
     methods: {

@@ -44,10 +44,6 @@
                                     <router-link class="nav-link text-dark" to="/">Home</router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <!-- <a class="nav-link" href="/about">About</a> -->
-                                    <router-link to="/about" class="nav-link text-dark">About</router-link>
-                                </li>
-                                <li class="nav-item">
                                     <router-link to="/services" class="nav-link text-dark">Services</router-link>
                                 </li>
                                 <li class="nav-item">
@@ -55,9 +51,6 @@
                                 </li>
                                 <li class="nav-item">
                                     <router-link class="nav-link text-dark" to="/blog/articles">Blog</router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link class="nav-link text-dark" to="/contact">Contact</router-link>
                                 </li>
                             </ul>
                         </div>

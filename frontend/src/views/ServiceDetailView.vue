@@ -37,6 +37,9 @@
             <div v-if="data == null" class="border p-5 border-dark rounded">
                 <span class="d-flex align-items-center gap-2"><i class="ri-box-3-line fs-1"></i> Empty</span>
             </div>
+            <div v-if="data == ''" class="border p-5 border-dark roundeds">
+                    <span class="d-flex align-items-center gap-2"><i class="ri-box-3-line fs-1"></i> Empty</span>
+                </div>
             <div class="col-md-4 bg-primary bg-white p-3 d-flex flex-column gap-3 rounded m-auto mb-5" v-if="data">
                 <h6 class="fw-bold mt-3">Request an Appointment</h6>
                 <form method="post" class="form d-flex flex-column gap-3" @submit.prevent="sendRequestToWork">
