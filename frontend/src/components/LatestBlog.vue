@@ -3,10 +3,6 @@
         <div id="services" class="container my-5 d-flex flex-column gap-5">
             <div class="service-headee w-50 m-auto">
                 <h4 class="h1 fw-bold">Latest Blog</h4>
-                <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis eligendi
-                    facilis consequuntur ab
-                    amet mollitia praesentium saepe veniam nesciunt voluptatum nihil in tempore error totam debitis
-                    incidunt harum, vitae corrupti!</p>
             </div>
             <div class="latest-body m-auto d-flex gap-3 flex-column justify-content-center align-items-center">
                 <div class="d-flex gap-3 flex-wrap justify-content-center">

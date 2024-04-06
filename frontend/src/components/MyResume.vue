@@ -2,10 +2,6 @@
     <div class="my-reusme p-5">
         <div class="reusme-header w-50 m-auto mb-5">
             <h4 class="h1 fw-bold mb-3">My Resume</h4>
-            <p class="text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis eligendi
-                facilis consequuntur ab
-                amet mollitia praesentium saepe veniam nesciunt voluptatum nihil in tempore error totam debitis
-                incidunt harum, vitae corrupti!</p>
         </div>
         <div class="d-flex flex-column flex-md-row align-items-start container gap-4" v-if="data">
             <div class="nav flex-sm-row nav-pills col col-md-4 flex-md-column" id="v-pills-tab" role="tablist"

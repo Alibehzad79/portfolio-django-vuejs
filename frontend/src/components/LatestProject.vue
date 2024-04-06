@@ -3,9 +3,6 @@
         <div class="container bg-white p-5 rounded d-flex flex-column gap-5 justify-content-center align-items-center">
             <div class="info w-50">
                 <h3 class="fw-bold">Latest Project</h3>
-                <p class="text-secondary mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-                    cumque quisquam, hic consectetur
-                    laborum veniam omnis aliquam</p>
             </div>
             <div class="projects d-flex flex-column flex-md-row gap-3" v-if="info">
                 <project-item v-for="data in info" :key="data" :image="data.image" :title="data.title"
