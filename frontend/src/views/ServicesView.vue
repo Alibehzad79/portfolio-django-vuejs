@@ -11,7 +11,7 @@
                     <service-item v-for="service in services" :key="service" :icon="service.icon" :title="service.title"
                         :content="service.content" :slug="service.slug"></service-item>
                 </div>
-                <div v-if="loading  && services != null">
+                <div v-if="loading && services != null">
                     <div class="spinner-border" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
@@ -41,18 +41,19 @@ export default {
         return {
             services: null,
             loading: true,
-            error: false
+            error: false,
+            domain: this.$store.state.domain
         }
     },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/v1/services/')
+        axios.get(`${this.domain}/api/v1/services/`)
             .then(response => this.services = response.data)
             .catch(() => this.error = true)
             .finally(this.loading = false)
     },
     watch: {
         $route() {
-            axios.get('http://127.0.0.1:8000/api/v1/services/')
+            axios.get(`${this.domain}/api/v1/services/`)
                 .then(response => this.services = response.data)
                 .catch(() => this.error = true)
                 .finally(this.loading = false)

@@ -45,18 +45,19 @@ export default {
         return {
             articles: null,
             error: false,
-            loading: true
+            loading: true,
+            domain: this.$store.state.domain
         }
     },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/v1/blog/articles/?limit=3')
+        axios.get(`${this.domain}/api/v1/blog/articles/?limit=3`)
             .then(response => this.articles = response.data)
             .catch(() => this.error = true)
             .finally(() => this.loading = false)
     },
     watch: {
         $route() {
-            axios.get('http://127.0.0.1:8000/api/v1/blog/articles/?limit=3')
+            axios.get(`${this.domain}/api/v1/blog/articles/?limit=3`)
                 .then(response => this.articles = response.data)
                 .catch(() => this.error = true)
                 .finally(() => this.loading = false)

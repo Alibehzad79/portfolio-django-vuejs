@@ -112,7 +112,8 @@ export default {
             message: "",
             response: 0,
             loading: false,
-            error: false
+            error: false,
+            domain: this.$store.state.domain
         }
     },
     methods: {
@@ -121,7 +122,7 @@ export default {
             this.error = false
             this.response = 0
             const message = { "name": this.name, "email": this.email, "subject": this.subject, "message": this.message }
-            await axios.post("http://127.0.0.1:8000/api/v1/contacts/", message)
+            await axios.post(`${this.domain}/api/v1/contacts/`, message)
                 .then(response => this.response = response.status)
                 .catch(() => this.error = true)
                 .finally(() => this.loading = false)
@@ -132,7 +133,7 @@ export default {
         }
     },
     mounted() {
-        axios.get("http://127.0.0.1:8000/api/v1/contacts/")
+        axios.get(`${this.domain}/api/v1/contacts/`)
             .then(response => this.data = response.data)
             .catch(() => this.dataError = true)
             .finally(() => this.dataLoading = false)
@@ -140,7 +141,7 @@ export default {
     },
     watch: {
         $route() {
-            axios.get("http://127.0.0.1:8000/api/v1/contacts/")
+            axios.get(`${this.domain}/api/v1/contacts/`)
                 .then(response => this.data = response.data)
                 .catch(() => this.dataError = true)
                 .finally(() => this.dataLoading = false)

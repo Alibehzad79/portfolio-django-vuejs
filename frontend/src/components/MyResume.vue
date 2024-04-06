@@ -95,21 +95,22 @@ export default {
         return {
             data: null,
             error: false,
-            loading: true
+            loading: true,
+            domain: this.$store.state.domain
         }
     },
     methods: {
 
     },
     mounted() {
-        axios.get("http://127.0.0.1:8000/api/v1/resume/")
+        axios.get(`${this.domain}/api/v1/resume/`)
             .then(response => this.data = response.data)
             .catch(() => this.error = false)
             .finally(() => this.loading = false)
     },
     watch: {
         $route() {
-            axios.get("http://127.0.0.1:8000/api/v1/resume/")
+            axios.get(`${this.domain}/api/v1/resume/`)
                 .then(response => this.data = response.data)
                 .catch(() => this.error = false)
                 .finally(() => this.loading = false)

@@ -2,7 +2,7 @@
 
     <div class="project-item container">
         <div @click="getUrl" class="d-flex flex-column gap-3 p-4 rounded-3">
-            <img :src="'http://127.0.0.1:8000' + image" :alt="title" class="img-fluid project-image">
+            <img :src="domain + image" :alt="title" class="img-fluid project-image">
             <div class="info d-flex flex-column gap-2">
                 <span class="text-start">{{ client }}</span>
                 <h6 class="text-start fw-bold project-title">{{ title }}</h6>
@@ -18,7 +18,9 @@ export default {
     name: "ProjectItem",
     props: ["image", "title", "client", "url"],
     data() {
-        return {}
+        return {
+            domain: this.$store.state.domain
+        }
     },
     methods: {
         getUrl() {

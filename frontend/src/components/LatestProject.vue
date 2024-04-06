@@ -42,17 +42,18 @@ export default {
             loading: true,
             error: false,
             info: null,
+            domain: this.$store.state.domain
         }
     },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/v1/projects/?limit=3')
+        axios.get(`${this.domain}/api/v1/projects/?limit=3`)
             .then(response => this.info = response.data)
             .catch(() => this.error = true)
             .finally(() => this.loading = false)
     },
     watch: {
         $route() {
-            axios.get('http://127.0.0.1:8000/api/v1/projects/?limit=3')
+            axios.get(`${this.domain}/api/v1/projects/?limit=3`)
                 .then(response => this.info = response.data)
                 .catch(() => this.error = true)
                 .finally(() => this.loading = false)

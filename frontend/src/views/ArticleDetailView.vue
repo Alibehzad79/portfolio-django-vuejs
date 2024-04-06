@@ -34,12 +34,12 @@ export default {
             data: null,
             loading: true,
             error: false,
-            domain: "http://127.0.0.1:8000"
+            domain: this.$store.state.domain
         }
     },
     mounted() {
         var slug = this.$route.params.slug
-        axios.get(`http://127.0.0.1:8000/api/v1/blog/articles/${slug}/`)
+        axios.get(`${this.domain}/api/v1/blog/articles/${slug}/`)
             .then(response => this.data = response.data)
             .catch(() => this.error = true)
             .finally(() => this.loading = false)
@@ -47,7 +47,7 @@ export default {
     watch: {
         $route() {
             var slug = this.$route.params.slug
-            axios.get(`http://127.0.0.1:8000/api/v1/blog/articles/${slug}/`)
+            axios.get(`${this.domain}/api/v1/blog/articles/${slug}/`)
                 .then(response => this.data = response.data)
                 .catch(() => this.error = true)
                 .finally(() => this.loading = false)

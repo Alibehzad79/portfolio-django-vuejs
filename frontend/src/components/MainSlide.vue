@@ -57,18 +57,18 @@ export default {
             profile: null,
             error: false,
             loading: true,
-            domain: "http://127.0.0.1:8000"
+            domain: this.$store.state.domain
         }
     },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/v1/profile/')
+        axios.get(`${this.domain}/api/v1/profile/`)
             .then(response => this.profile = response.data)
             .catch(() => this.error = true)
             .finally(() => this.loading = false)
     },
     watch: {
         $route() {
-            axios.get('http://127.0.0.1:8000/api/v1/profile/')
+            axios.get(`${this.domain}/api/v1/profile/`)
                 .then(response => this.profile = response.data)
                 .catch(() => this.error = true)
                 .finally(() => this.loading = false)

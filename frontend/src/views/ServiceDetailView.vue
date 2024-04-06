@@ -96,7 +96,8 @@ export default {
             message: "",
             response: 0,
             loading: false,
-            error: false
+            error: false,
+            domain: this.$store.state.domain
         }
     },
     methods: {
@@ -105,7 +106,7 @@ export default {
             this.error = false
             this.response = 0
             var data = { "service": this.data.id, "name": this.name, "email": this.email, "subject": this.subject, "message": this.message }
-            axios.post("http://127.0.0.1:8000/api/v1/request-to-work/", data)
+            axios.post(`${this.domain}/api/v1/request-to-work/`, data)
                 .then(response => this.response = response.status)
                 .catch(() => this.error = true)
                 .finally(() => this.loading = false)
@@ -117,7 +118,7 @@ export default {
     },
     mounted() {
         var slug = this.$route.params.slug
-        axios.get(`http://127.0.0.1:8000/api/v1/services/${slug}`)
+        axios.get(`${this.domain}/api/v1/services/${slug}`)
             .then(response => this.data = response.data)
             .catch(() => this.dataError = true)
             .finally(() => this.dataLoading = false)
@@ -125,7 +126,7 @@ export default {
     watch: {
         $route() {
             var slug = this.$route.params.slug
-            axios.get(`http://127.0.0.1:8000/api/v1/services/${slug}`)
+            axios.get(`${this.domain}/api/v1/services/${slug}`)
                 .then(response => this.data = response.data)
                 .catch(() => this.dataError = true)
                 .finally(() => this.dataLoading = false)

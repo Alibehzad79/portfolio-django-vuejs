@@ -58,7 +58,7 @@ export default {
         return {
             search: false,
             data: null,
-            domain: "http://127.0.0.1:8000"
+            domain: this.$store.state.domain
         }
     },
     methods: {
@@ -67,14 +67,14 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://127.0.0.1:8000/api/v1/site-settings/')
+        axios.get(`${this.domain}/api/v1/site-settings/`)
             .then(response => this.data = response.data)
             .catch(() => this.error = true)
             .finally(() => this.loading = false)
     },
     watch: {
         $route() {
-            axios.get('http://127.0.0.1:8000/api/v1/site-settings/')
+            axios.get(`${this.domain}/api/v1/site-settings/`)
                 .then(response => this.data = response.data)
                 .catch(() => this.error = true)
                 .finally(() => this.loading = false)
