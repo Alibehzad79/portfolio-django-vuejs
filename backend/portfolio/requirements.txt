@@ -4,4 +4,7 @@ django-cors-headers==4.3.1
 django-tinymce==4.0.0
 djangorestframework==3.15.1
 pillow==10.2.0
+psycopg==3.1.18
+psycopg-binary==3.1.18
 sqlparse==0.4.4
+typing_extensions==4.11.0
