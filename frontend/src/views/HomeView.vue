@@ -3,9 +3,9 @@
     <MainSlide />
     <MyServices />
     <LatestProject />
-    <MyResume />
+    <MyResume id="resume" />
     <LatestBlog />
-    <ContactUsComponent />
+    <ContactUsComponent id="contact" />
   </div>
 </template>
 

@@ -6,6 +6,7 @@ import ServiceDetailView from '../views/ServiceDetailView.vue'
 import ProjectsView from '../views/ProjectsView.vue'
 import ArticleListView from '../views/ArticleListView.vue'
 import ArticleDetailView from '../views/ArticleDetailView.vue'
+import SearchView from '../views/SearchView.vue'
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     path: '/blog/articles',
     name: 'articles',
     component: ArticleListView
+  },
+  {
+    path: '/blog/articles/search/:search',
+    name: 'search',
+    component: SearchView
   },
   {
     path: '/blog/articles/:slug',

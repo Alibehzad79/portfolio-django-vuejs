@@ -28,11 +28,10 @@
                             <router-link class="nav-link" to="/blog/articles">Blog</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link" to="/contact">Contact</router-link>
+                            <a class="nav-link" href="/#contact">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <!-- <a class="nav-link" href="/about">About</a> -->
-                            <router-link to="/about" class="nav-link">About</router-link>
+                            <a href="/#resume" class="nav-link">About</a>
                         </li>
                     </ul>
                     <div class="d-none d-lg-flex search" @click="showSearch"
@@ -43,8 +42,10 @@
             </div>
         </nav>
         <div class="search-box container mt-2 d-flex" v-if="search">
-            <input type="search" class="form-control rounded-5 rounded-end-0 py-2" placeholder="Search...">
-            <button class="btn btn-warning rounded-start-0 rounded-5 px-3"><i class="ri-search-line"></i></button>
+            <input type="search" class="form-control rounded-5 rounded-end-0 py-2" v-model="searchInput"
+                placeholder="Search in blog..." @keyup.enter="getSearch()">
+            <button class="btn btn-warning rounded-start-0 rounded-5 px-3" @click="getSearch"><i
+                    class="ri-search-line"></i></button>
         </div>
     </div>
 </template>
@@ -57,6 +58,7 @@ export default {
     data() {
         return {
             search: false,
+            searchInput: "",
             data: null,
             domain: this.$store.state.domain
         }
@@ -64,6 +66,9 @@ export default {
     methods: {
         showSearch() {
             this.search = !this.search
+        },
+        getSearch() {
+            this.$router.push('/blog/articles/search/' + this.searchInput)
         }
     },
     mounted() {
