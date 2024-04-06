@@ -12,12 +12,18 @@ from blog_app.serializers import ArticleSerializer
 @api_view(["GET"])
 def article_list_api(request):
     item_limit = request.GET.get("limit")
+    searchInput = request.GET.get("search")
     if item_limit:
         articles = (
             Article.objects.filter(is_active=True)
             .order_by("-id")
             .all()[: int(item_limit)]
         )
+    else:
+        articles = Article.objects.filter(is_active=True).order_by("-id").all()
+
+    if searchInput:
+        articles = Article.objects.get_search(searchInput)
     else:
         articles = Article.objects.filter(is_active=True).order_by("-id").all()
     serializer = ArticleSerializer(articles, many=True)
