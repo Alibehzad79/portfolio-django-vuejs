@@ -4,9 +4,6 @@
         <div class="container p-5 rounded d-flex flex-column gap-5 justify-content-center align-items-center">
             <div class="info w-50">
                 <h3 class="fw-bold">Contact Me</h3>
-                <p class="text-secondary mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-                    cumque quisquam, hic consectetur
-                    laborum veniam omnis aliquam</p>
             </div>
 
             <div class="d-flex flex-column flex-md-row w-100 justify-content-center align-items-start gap-5">
